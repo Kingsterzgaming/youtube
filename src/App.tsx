@@ -12,6 +12,7 @@ import ExploreView from "./components/ExploreView";
 import DataExporter from "./components/DataExporter";
 import ChannelCompare from "./components/ChannelCompare";
 
+// icon loading
 import {
   Youtube,
   Compass,
@@ -36,13 +37,13 @@ type TabType = "dashboard" | "videos" | "comments" | "playlists" | "ai" | "explo
 export default function App() {
   const [apiKey, setApiKey] = useState("");
   const [activeTab, setActiveTab] = useState<TabType>("explore");
-  
+
   // Active Channel Profile
   const [channelId, setChannelId] = useState("");
   const [channelTitle, setChannelTitle] = useState("");
   const [channelProfile, setChannelProfile] = useState<ChannelProfile | null>(null);
   const [videos, setVideos] = useState<VideoItem[]>([]);
-  
+
   // Loaders
   const [loadingChannel, setLoadingChannel] = useState(false);
   const [globalError, setGlobalError] = useState<string | null>(null);
@@ -63,7 +64,7 @@ export default function App() {
   useEffect(() => {
     const savedKey = localStorage.getItem("yt_data_engine_key") || "";
     setApiKey(savedKey);
-    
+
     // Check if we have an active channel already in localStorage to restore session
     const savedChannelId = localStorage.getItem("yt_data_engine_active_channel_id") || "";
     const savedChannelTitle = localStorage.getItem("yt_data_engine_active_channel_title") || "";
@@ -167,20 +168,20 @@ export default function App() {
   } as React.CSSProperties;
 
   return (
-    <div 
-      className="min-h-screen text-zinc-100 flex flex-col md:flex-row font-sans relative overflow-x-hidden" 
+    <div
+      className="min-h-screen text-zinc-100 flex flex-col md:flex-row font-sans relative overflow-x-hidden"
       id="app-container"
       style={activeThemeStyle}
     >
-      
+
       {/* Dynamic Background Aurora Glows */}
-      <div 
-        className="fixed top-[-5%] left-[-5%] w-[45vw] h-[45vh] rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow" 
+      <div
+        className="fixed top-[-5%] left-[-5%] w-[45vw] h-[45vh] rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow"
         style={{ backgroundColor: activeTheme.brandRed, opacity: 0.06 }}
       />
-      <div 
-        className="fixed bottom-[-5%] right-[-5%] w-[45vw] h-[45vh] rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow" 
-        style={{ backgroundColor: activeTheme.brandPurple, opacity: 0.06, animationDelay: "-3s" }} 
+      <div
+        className="fixed bottom-[-5%] right-[-5%] w-[45vw] h-[45vh] rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow"
+        style={{ backgroundColor: activeTheme.brandPurple, opacity: 0.06, animationDelay: "-3s" }}
       />
 
       {/* -------------------------------------- */}
@@ -243,15 +244,14 @@ export default function App() {
           {/* Navigation links */}
           <nav className="space-y-1.5">
             <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-widest px-2 mb-2">Navigation</span>
-            
+
             <button
               type="button"
               onClick={() => setActiveTab("explore")}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
-                activeTab === "explore" 
-                  ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15" 
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "explore"
+                  ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
                   : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
-              }`}
+                }`}
             >
               <Compass className="w-4 h-4" /> Resolve &amp; Explore
             </button>
@@ -259,11 +259,10 @@ export default function App() {
             <button
               type="button"
               onClick={() => setActiveTab("compare")}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
-                activeTab === "compare" 
-                  ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15" 
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "compare"
+                  ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
                   : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
-              }`}
+                }`}
             >
               <ArrowRightLeft className="w-4 h-4" /> Compare Channels
             </button>
@@ -273,11 +272,10 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setActiveTab("dashboard")}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
-                    activeTab === "dashboard" 
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15" 
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "dashboard"
+                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
                       : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
-                  }`}
+                    }`}
                 >
                   <TrendingUp className="w-4 h-4" /> Profile Dashboard
                 </button>
@@ -285,11 +283,10 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setActiveTab("videos")}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
-                    activeTab === "videos" 
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15" 
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "videos"
+                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
                       : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
-                  }`}
+                    }`}
                 >
                   <Video className="w-4 h-4" /> Video Analytics
                 </button>
@@ -297,11 +294,10 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setActiveTab("comments")}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
-                    activeTab === "comments" 
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15" 
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "comments"
+                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
                       : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
-                  }`}
+                    }`}
                 >
                   <MessageSquare className="w-4 h-4" /> Community Sentiment
                 </button>
@@ -309,11 +305,10 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setActiveTab("playlists")}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
-                    activeTab === "playlists" 
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15" 
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "playlists"
+                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
                       : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
-                  }`}
+                    }`}
                 >
                   <FolderHeart className="w-4 h-4" /> Playlists Directory
                 </button>
@@ -321,11 +316,10 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setActiveTab("ai")}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
-                    activeTab === "ai" 
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15" 
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "ai"
+                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
                       : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
-                  }`}
+                    }`}
                 >
                   <Sparkles className="w-4 h-4 text-pink-400" /> AI Insights Layer
                 </button>
@@ -333,11 +327,10 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setActiveTab("database")}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
-                    activeTab === "database" 
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15" 
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "database"
+                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
                       : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
-                  }`}
+                    }`}
                 >
                   <Database className="w-4 h-4" /> Export Data
                 </button>
@@ -364,11 +357,10 @@ export default function App() {
           <button
             type="button"
             onClick={() => setActiveTab("settings")}
-            className={`p-2 rounded-xl transition-all cursor-pointer ${
-              activeTab === "settings"
+            className={`p-2 rounded-xl transition-all cursor-pointer ${activeTab === "settings"
                 ? "bg-brand-red/10 border border-brand-red/25 text-brand-red"
                 : "text-zinc-400 hover:text-zinc-200 border border-transparent"
-            }`}
+              }`}
             title="Settings & API Key"
           >
             <Key className="w-4.5 h-4.5 text-brand-red" />
@@ -389,9 +381,8 @@ export default function App() {
             <button
               type="button"
               onClick={() => { setActiveTab("explore"); setMobileMenuOpen(false); }}
-              className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${
-                activeTab === "explore" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
-              }`}
+              className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${activeTab === "explore" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
+                }`}
             >
               <Compass className="w-4 h-4" /> Resolve &amp; Explore
             </button>
@@ -399,9 +390,8 @@ export default function App() {
             <button
               type="button"
               onClick={() => { setActiveTab("compare"); setMobileMenuOpen(false); }}
-              className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${
-                activeTab === "compare" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
-              }`}
+              className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${activeTab === "compare" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
+                }`}
             >
               <ArrowRightLeft className="w-4 h-4" /> Compare Channels
             </button>
@@ -411,9 +401,8 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => { setActiveTab("dashboard"); setMobileMenuOpen(false); }}
-                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${
-                    activeTab === "dashboard" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
-                  }`}
+                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${activeTab === "dashboard" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
+                    }`}
                 >
                   <TrendingUp className="w-4 h-4" /> Profile Dashboard
                 </button>
@@ -421,9 +410,8 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => { setActiveTab("videos"); setMobileMenuOpen(false); }}
-                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${
-                    activeTab === "videos" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
-                  }`}
+                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${activeTab === "videos" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
+                    }`}
                 >
                   <Video className="w-4 h-4" /> Video Analytics
                 </button>
@@ -431,9 +419,8 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => { setActiveTab("comments"); setMobileMenuOpen(false); }}
-                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${
-                    activeTab === "comments" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
-                  }`}
+                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${activeTab === "comments" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
+                    }`}
                 >
                   <MessageSquare className="w-4 h-4" /> Community Sentiment
                 </button>
@@ -441,9 +428,8 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => { setActiveTab("playlists"); setMobileMenuOpen(false); }}
-                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${
-                    activeTab === "playlists" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
-                  }`}
+                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${activeTab === "playlists" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
+                    }`}
                 >
                   <FolderHeart className="w-4 h-4" /> Playlists Directory
                 </button>
@@ -451,9 +437,8 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => { setActiveTab("ai"); setMobileMenuOpen(false); }}
-                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${
-                    activeTab === "ai" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
-                  }`}
+                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${activeTab === "ai" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
+                    }`}
                 >
                   <Sparkles className="w-4 h-4" /> AI Insights Layer
                 </button>
@@ -461,9 +446,8 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => { setActiveTab("database"); setMobileMenuOpen(false); }}
-                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${
-                    activeTab === "database" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
-                  }`}
+                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold ${activeTab === "database" ? "bg-gradient-to-r from-brand-red to-brand-purple text-white" : "text-zinc-400"
+                    }`}
                 >
                   <Database className="w-4 h-4" /> Export Data
                 </button>
@@ -481,9 +465,8 @@ export default function App() {
             <button
               type="button"
               onClick={() => { setActiveTab("settings"); setMobileMenuOpen(false); }}
-              className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold border border-dashed mt-2 ${
-                activeTab === "settings" ? "bg-[#12121c] text-white border-brand-red/40" : "text-zinc-400 border-white/5"
-              }`}
+              className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold border border-dashed mt-2 ${activeTab === "settings" ? "bg-[#12121c] text-white border-brand-red/40" : "text-zinc-400 border-white/5"
+                }`}
             >
               <Key className="w-4 h-4 text-brand-red" /> Settings &amp; API Key
             </button>
@@ -505,11 +488,10 @@ export default function App() {
           <button
             type="button"
             onClick={() => setActiveTab("settings")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer border ${
-              activeTab === "settings"
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer border ${activeTab === "settings"
                 ? "bg-brand-red text-white border-brand-red/20 shadow-md shadow-brand-red/15"
                 : "bg-white/[0.02] border-white/5 text-zinc-300 hover:bg-white/5 hover:text-zinc-100"
-            }`}
+              }`}
           >
             <Key className="w-3.5 h-3.5 text-brand-red" />
             Settings &amp; API Key
@@ -517,105 +499,105 @@ export default function App() {
         </header>
 
         <main className="flex-1 px-4 sm:px-8 py-8 md:max-w-7xl mx-auto w-full relative z-10">
-        {/* Loading Channel Screen Overlay */}
-        {loadingChannel ? (
-          <div className="h-96 flex flex-col items-center justify-center text-zinc-500 text-xs">
-            <Loader2 className="w-10 h-10 animate-spin text-brand-red mb-3" />
-            <h3 className="text-zinc-300 font-display font-semibold text-sm mb-1">Crawling Channel Profiles</h3>
-            <p className="max-w-xs text-center opacity-85 leading-normal">
-              Resolving identifiers, mapping playlist entries, and fetching rich performance metrics directly from YouTube...
-            </p>
-          </div>
-        ) : globalError ? (
-          <div className="bg-brand-red/10 border border-brand-red/25 rounded-xl p-4 flex items-start gap-3 text-brand-red mb-6 max-w-2xl mx-auto">
-            <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-            <div className="text-xs sm:text-sm">
-              <p className="font-semibold">Crawling Failed</p>
-              <p className="opacity-90 mt-1">{globalError}</p>
-              <button
-                type="button"
-                onClick={() => setGlobalError(null)}
-                className="text-white font-semibold underline mt-2 text-xs focus:outline-none cursor-pointer"
-              >
-                Dismiss
-              </button>
+          {/* Loading Channel Screen Overlay */}
+          {loadingChannel ? (
+            <div className="h-96 flex flex-col items-center justify-center text-zinc-500 text-xs">
+              <Loader2 className="w-10 h-10 animate-spin text-brand-red mb-3" />
+              <h3 className="text-zinc-300 font-display font-semibold text-sm mb-1">Crawling Channel Profiles</h3>
+              <p className="max-w-xs text-center opacity-85 leading-normal">
+                Resolving identifiers, mapping playlist entries, and fetching rich performance metrics directly from YouTube...
+              </p>
             </div>
-          </div>
-        ) : null}
-
-        {/* View Switches */}
-        {!loadingChannel && (
-          <div className="animate-fade-in">
-            {/* Resolve & Explore */}
-            {activeTab === "explore" && (
-              <div className="space-y-12">
-                <ChannelSearch apiKey={apiKey} onChannelSelect={handleChannelSelect} />
-                <ExploreView apiKey={apiKey} onChannelSelect={handleChannelSelect} />
+          ) : globalError ? (
+            <div className="bg-brand-red/10 border border-brand-red/25 rounded-xl p-4 flex items-start gap-3 text-brand-red mb-6 max-w-2xl mx-auto">
+              <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+              <div className="text-xs sm:text-sm">
+                <p className="font-semibold">Crawling Failed</p>
+                <p className="opacity-90 mt-1">{globalError}</p>
+                <button
+                  type="button"
+                  onClick={() => setGlobalError(null)}
+                  className="text-white font-semibold underline mt-2 text-xs focus:outline-none cursor-pointer"
+                >
+                  Dismiss
+                </button>
               </div>
-            )}
+            </div>
+          ) : null}
 
-            {/* Profile Dashboard */}
-            {activeTab === "dashboard" && channelProfile && (
-              <ChannelDashboard channel={channelProfile} videos={videos} />
-            )}
+          {/* View Switches */}
+          {!loadingChannel && (
+            <div className="animate-fade-in">
+              {/* Resolve & Explore */}
+              {activeTab === "explore" && (
+                <div className="space-y-12">
+                  <ChannelSearch apiKey={apiKey} onChannelSelect={handleChannelSelect} />
+                  <ExploreView apiKey={apiKey} onChannelSelect={handleChannelSelect} />
+                </div>
+              )}
 
-            {/* Video Analytics */}
-            {activeTab === "videos" && videos.length > 0 && (
-              <VideoAnalytics videos={videos} />
-            )}
+              {/* Profile Dashboard */}
+              {activeTab === "dashboard" && channelProfile && (
+                <ChannelDashboard channel={channelProfile} videos={videos} />
+              )}
 
-            {/* Community Sentiment */}
-            {activeTab === "comments" && videos.length > 0 && (
-              <CommentAnalyzer apiKey={apiKey} videos={videos} />
-            )}
+              {/* Video Analytics */}
+              {activeTab === "videos" && videos.length > 0 && (
+                <VideoAnalytics videos={videos} />
+              )}
 
-            {/* Playlists Directory */}
-            {activeTab === "playlists" && channelId && (
-              <PlaylistsView apiKey={apiKey} channelId={channelId} />
-            )}
+              {/* Community Sentiment */}
+              {activeTab === "comments" && videos.length > 0 && (
+                <CommentAnalyzer apiKey={apiKey} videos={videos} />
+              )}
 
-            {/* AI Insights Layer */}
-            {activeTab === "ai" && channelProfile && (
-              <AiInsights channel={channelProfile} videos={videos} />
-            )}
+              {/* Playlists Directory */}
+              {activeTab === "playlists" && channelId && (
+                <PlaylistsView apiKey={apiKey} channelId={channelId} />
+              )}
 
-            {/* Export Data */}
-            {activeTab === "database" && channelProfile && (
-              <DataExporter channel={channelProfile} videos={videos} />
-            )}
+              {/* AI Insights Layer */}
+              {activeTab === "ai" && channelProfile && (
+                <AiInsights channel={channelProfile} videos={videos} />
+              )}
 
-            {/* Compare Channels */}
-            {activeTab === "compare" && (
-              <ChannelCompare apiKey={apiKey} activeChannel={channelProfile} />
-            )}
+              {/* Export Data */}
+              {activeTab === "database" && channelProfile && (
+                <DataExporter channel={channelProfile} videos={videos} />
+              )}
 
-            {/* System Configuration */}
-            {activeTab === "settings" && (
-              <SettingsPanel
-                apiKey={apiKey}
-                setApiKey={(key) => setApiKey(key)}
-                onVerify={async () => true}
-                onClose={() => setActiveTab(channelId ? "dashboard" : "explore")}
-                activeThemeId={activeThemeId}
-                onThemeChange={handleThemeChange}
-              />
-            )}
-          </div>
-        )}
+              {/* Compare Channels */}
+              {activeTab === "compare" && (
+                <ChannelCompare apiKey={apiKey} activeChannel={channelProfile} />
+              )}
 
-        {/* Footer Accent */}
-        <footer className="mt-16 pt-8 border-t border-white/[0.03] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-zinc-500 font-medium" id="app-footer">
-          <div>
-            <span>&copy; 2026 </span>
-            <span className="text-zinc-400 font-semibold font-display">Kingsterz Gaming</span>
-            <span>. All rights reserved.</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-red/40 animate-pulse" />
-            <span className="font-mono tracking-wider uppercase text-[9px] text-zinc-600">YouTube Intelligence Engine</span>
-          </div>
-        </footer>
-      </main>
+              {/* System Configuration */}
+              {activeTab === "settings" && (
+                <SettingsPanel
+                  apiKey={apiKey}
+                  setApiKey={(key) => setApiKey(key)}
+                  onVerify={async () => true}
+                  onClose={() => setActiveTab(channelId ? "dashboard" : "explore")}
+                  activeThemeId={activeThemeId}
+                  onThemeChange={handleThemeChange}
+                />
+              )}
+            </div>
+          )}
+
+          {/* Footer Accent */}
+          <footer className="mt-16 pt-8 border-t border-white/[0.03] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-zinc-500 font-medium" id="app-footer">
+            <div>
+              <span>&copy; 2026 </span>
+              <span className="text-zinc-400 font-semibold font-display">Kingsterz Gaming</span>
+              <span>. All rights reserved.</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-red/40 animate-pulse" />
+              <span className="font-mono tracking-wider uppercase text-[9px] text-zinc-600">YouTube Intelligence Engine</span>
+            </div>
+          </footer>
+        </main>
       </div>
     </div>
   );
