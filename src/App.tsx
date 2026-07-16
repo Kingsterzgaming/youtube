@@ -249,8 +249,8 @@ export default function App() {
               type="button"
               onClick={() => setActiveTab("explore")}
               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "explore"
-                  ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
-                  : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
+                : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
                 }`}
             >
               <Compass className="w-4 h-4" /> Resolve &amp; Explore
@@ -260,8 +260,8 @@ export default function App() {
               type="button"
               onClick={() => setActiveTab("compare")}
               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "compare"
-                  ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
-                  : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
+                : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
                 }`}
             >
               <ArrowRightLeft className="w-4 h-4" /> Compare Channels
@@ -273,8 +273,8 @@ export default function App() {
                   type="button"
                   onClick={() => setActiveTab("dashboard")}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "dashboard"
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
-                      : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                    ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
+                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
                     }`}
                 >
                   <TrendingUp className="w-4 h-4" /> Profile Dashboard
@@ -284,8 +284,8 @@ export default function App() {
                   type="button"
                   onClick={() => setActiveTab("videos")}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "videos"
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
-                      : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                    ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
+                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
                     }`}
                 >
                   <Video className="w-4 h-4" /> Video Analytics
@@ -295,8 +295,8 @@ export default function App() {
                   type="button"
                   onClick={() => setActiveTab("comments")}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "comments"
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
-                      : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                    ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
+                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
                     }`}
                 >
                   <MessageSquare className="w-4 h-4" /> Community Sentiment
@@ -306,8 +306,8 @@ export default function App() {
                   type="button"
                   onClick={() => setActiveTab("playlists")}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "playlists"
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
-                      : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                    ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
+                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
                     }`}
                 >
                   <FolderHeart className="w-4 h-4" /> Playlists Directory
@@ -317,8 +317,8 @@ export default function App() {
                   type="button"
                   onClick={() => setActiveTab("ai")}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "ai"
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
-                      : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                    ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
+                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
                     }`}
                 >
                   <Sparkles className="w-4 h-4 text-pink-400" /> AI Insights Layer
@@ -328,8 +328,8 @@ export default function App() {
                   type="button"
                   onClick={() => setActiveTab("database")}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${activeTab === "database"
-                      ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
-                      : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                    ? "bg-gradient-to-r from-brand-red to-brand-purple text-white shadow-md shadow-brand-red/15"
+                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
                     }`}
                 >
                   <Database className="w-4 h-4" /> Export Data
@@ -358,8 +358,8 @@ export default function App() {
             type="button"
             onClick={() => setActiveTab("settings")}
             className={`p-2 rounded-xl transition-all cursor-pointer ${activeTab === "settings"
-                ? "bg-brand-red/10 border border-brand-red/25 text-brand-red"
-                : "text-zinc-400 hover:text-zinc-200 border border-transparent"
+              ? "bg-brand-red/10 border border-brand-red/25 text-brand-red"
+              : "text-zinc-400 hover:text-zinc-200 border border-transparent"
               }`}
             title="Settings & API Key"
           >
@@ -489,8 +489,8 @@ export default function App() {
             type="button"
             onClick={() => setActiveTab("settings")}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer border ${activeTab === "settings"
-                ? "bg-brand-red text-white border-brand-red/20 shadow-md shadow-brand-red/15"
-                : "bg-white/[0.02] border-white/5 text-zinc-300 hover:bg-white/5 hover:text-zinc-100"
+              ? "bg-brand-red text-white border-brand-red/20 shadow-md shadow-brand-red/15"
+              : "bg-white/[0.02] border-white/5 text-zinc-300 hover:bg-white/5 hover:text-zinc-100"
               }`}
           >
             <Key className="w-3.5 h-3.5 text-brand-red" />
@@ -582,6 +582,7 @@ export default function App() {
                   onThemeChange={handleThemeChange}
                 />
               )}
+
             </div>
           )}
 

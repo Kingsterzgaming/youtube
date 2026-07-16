@@ -31,10 +31,10 @@ export default function DataExporter({ channel, videos }: DataExporterProps) {
 
   const handleExportCSV = () => {
     if (videos.length === 0) return;
-    
+
     // Headers
     const headers = ["Video ID", "Title", "Published At", "Duration", "Views", "Likes", "Comments", "Engagement Rate (%)"];
-    
+
     // Rows
     const rows = videos.map((v) => {
       const engRate = v.viewCount > 0 ? ((v.likeCount + v.commentCount) / v.viewCount) * 100 : 0;
@@ -93,7 +93,7 @@ export default function DataExporter({ channel, videos }: DataExporterProps) {
             <p className="text-xs text-zinc-400 leading-relaxed">
               Includes full subscriber milestone levels, view aggregates, descriptions, banner layouts, custom handles, and countries.
             </p>
-            
+
             <div className="bg-zinc-950/40 rounded-xl p-3 border border-white/5 font-mono text-[11px] text-zinc-400 space-y-1">
               <p>• Size: ~5 KB JSON data packet</p>
               <p>• Rows: 1 structured profile record</p>
@@ -127,7 +127,7 @@ export default function DataExporter({ channel, videos }: DataExporterProps) {
             <p className="text-xs text-zinc-400 leading-relaxed">
               Structured catalog of recently crawled uploads, compiling lifetime video views, comment quantities, publish times, like indexes, and calculated interaction rates.
             </p>
-            
+
             <div className="bg-zinc-950/40 rounded-xl p-3 border border-white/5 font-mono text-[11px] text-zinc-400 space-y-1">
               <p>• Size: ~30 KB CSV/JSON packet</p>
               <p>• Records: {videos.length} videos resolved</p>
@@ -163,7 +163,7 @@ export default function DataExporter({ channel, videos }: DataExporterProps) {
       </div>
 
       {/* Structured Schema Info Card */}
-      <div className="glass-card rounded-2xl p-6 shadow-xl border border-white/[0.02]">
+      {/* <div className="glass-card rounded-2xl p-6 shadow-xl border border-white/[0.02]">
         <h4 className="font-display font-bold text-white text-sm mb-2.5 flex items-center gap-2">
           <ShieldCheck className="w-4.5 h-4.5 text-brand-red" /> DB Pipeline Schematics (SQLite / Postgres)
         </h4>
@@ -193,7 +193,7 @@ CREATE TABLE youtube_videos (
   duration_string VARCHAR(20)
 );`}
         </pre>
-      </div>
+      </div> */}
     </div>
   );
 }
